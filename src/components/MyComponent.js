@@ -4,7 +4,7 @@ import React from 'react';
 class MyComponent extends React.Component {
 
     state = {
-        name: 'Minh Duc',
+        name: 'Default',
         address: 'Ha Noi',
         age: 31
     }
@@ -22,18 +22,29 @@ class MyComponent extends React.Component {
         console.log(">> Hello I'm Okabe")
     };
 
+    handleOnChangeInput = (event) => {
+        this.setState({
+            name: event.target.value
+        });
+    };
+
+    handleOnSubmit = (event) => {
+        event.preventDefault();
+        console.log(this.state);
+    }
+
     //JSX
     render() {
         return (
 
             <div>
                 My name is {this.state.name} and i'm {this.state.age} years old
-                <button onMouseOver={this.handleOnMoverOver}>
-                    Okabe Rintaro
-                </button>
-                <button onClick={(event) => { this.handleClick(event) }}>
-                    Kurisu
-                </button>
+                <form onSubmit={(event) => this.handleOnSubmit(event)}>
+                    <input type="text"
+                        onChange={(event) => this.handleOnChangeInput(event)}
+                    />
+                    <button>Submit</button>
+                </form>
             </div>
         );
     }
