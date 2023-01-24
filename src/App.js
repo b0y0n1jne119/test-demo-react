@@ -10,10 +10,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        Minh Duc
-        < MyComponent >
-
-        </MyComponent >
+        < MyComponent />
       </div>
     );
   }
