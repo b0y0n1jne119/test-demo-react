@@ -1,5 +1,6 @@
 import React from 'react';
 import './DisplayInfor.scss';
+import screen from './../logo.svg';
 
 class DisplayInfor extends React.Component {
 
@@ -19,6 +20,7 @@ class DisplayInfor extends React.Component {
         //props => viết tắt của properties
         return (
             <div className="display-infor-container">
+                <img src={screen} />
                 <div>
                     <span onClick={() => { this.handleShowHide() }}>
                         {this.state.isShowListUser === true ? "Hide list user:" : "Show list user:"}
