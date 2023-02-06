@@ -40,7 +40,7 @@ class AddUserInfor extends React.Component {
                         type="text"
                         onChange={(event) => this.handleOnChangeInput(event)}
                     />
-
+                    <br />
                     <label>Your age: </label>
                     <input
                         value={this.state.age}
