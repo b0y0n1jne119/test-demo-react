@@ -1,4 +1,6 @@
 import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from 'react-pro-sidebar';
+import { DiReact } from 'react-icons/di';
+
 export default function SideBar() {
 
     const { collapseSidebar } = useProSidebar();
@@ -6,7 +8,7 @@ export default function SideBar() {
     return (
         <div style={{ display: 'flex', height: '100%' }}>
             <Sidebar>
-                Minh Duc
+                <DiReact size={'3em'} color={'00bfff'} /> Virgo's
                 <hr />
                 <Menu>
                     <SubMenu label="Charts">
