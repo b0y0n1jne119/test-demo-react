@@ -1,4 +1,5 @@
 import ModalCreateUser from './ModalCreateUser'
+import './ManageUser.scss';
 
 export default function ManageUser(props) {
     return (
@@ -12,8 +13,9 @@ export default function ManageUser(props) {
                 </div>
                 <div>
                     Table User
-                    <ModalCreateUser />
+
                 </div>
+                <ModalCreateUser />
             </div>
         </div>
     )
