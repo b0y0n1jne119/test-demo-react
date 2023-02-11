@@ -14,11 +14,18 @@ export default function ModalCreateUser() {
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
     const [role, setRole] = useState("USER");
-    const [iamge, setImage] = useState("");
+    const [image, setImage] = useState("");
+    const [previewImage, setPreviewImage] = useState("");
 
     const handleUploadImage = (event) => {
-        console.log("upload file")
+        if (event.target && event.target.files && event.target.files[0]) {
+            setPreviewImage(URL.createObjectURL(event.target.files[0]))
+            setImage(event.target.files[0])
+        } else {
+            // setPreviewImage("");
+        }
     }
+
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
@@ -45,7 +52,9 @@ export default function ModalCreateUser() {
                         </div>
                         <div className="col-md-4">
                             <label className="form-label">Role</label>
-                            <select className="form-select" onChange={(event) => setRole(event.target.value)}>
+                            <select className="form-select"
+                                onChange={(event) => setRole(event.target.value)}
+                                value={role}>
                                 <option value="USER">USER</option>
                                 <option value="Admin">Admin</option>
                             </select>
@@ -56,8 +65,13 @@ export default function ModalCreateUser() {
                             <input type="file" hidden id="labelUpload" onChange={(event) => handleUploadImage(event)} />
                         </div>
                         <div className='col-md-12 img-preview'>
-                            <span>Preview Image</span>
-                            {/* <img src="https://bit.ly/eric-bot-2" /> */}
+                            {previewImage ?
+                                <img src={previewImage} />
+                                :
+                                <span>Preview Image</span>
+                            }
+
+
                         </div>
                     </form>
                 </Modal.Body>
