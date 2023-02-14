@@ -3,12 +3,20 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './ManageUser';
 import { FcPlus } from 'react-icons/fc';
+import axios from 'axios';
 
-export default function ModalCreateUser() {
-    const [show, setShow] = useState(false);
+export default function ModalCreateUser(props) {
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const { show, setShow } = props;
+    const handleClose = () => {
+        setShow(false);
+        setEmail("");
+        setPassword("");
+        setUsername("");
+        setRole("USER");
+        setImage("");
+        setPreviewImage("");
+    }
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -26,12 +34,19 @@ export default function ModalCreateUser() {
         }
     }
 
+    const handleSubmitCreateUser = async () => {
+        const data = new FormData();
+        data.append('emai', email);
+        data.append('password', password);
+        data.append('username', username);
+        data.append('role', role);
+        data.append('image', image);
+
+        axios.post('', data);
+    }
+
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
-            </Button>
-
             <Modal show={show} onHide={handleClose} size="xl">
                 <Modal.Header closeButton>
                     <Modal.Title>Add new user</Modal.Title>
@@ -79,7 +94,7 @@ export default function ModalCreateUser() {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
                         Save Changes
                     </Button>
                 </Modal.Footer>
