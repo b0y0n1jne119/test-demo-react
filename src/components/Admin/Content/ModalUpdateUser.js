@@ -6,7 +6,7 @@ import { FcPlus } from 'react-icons/fc';
 import { toast } from 'react-toastify';
 import { postCreateNewUser } from '../../../services/apiServices';
 
-export default function ModalCreateUser(props) {
+export default function ModalUpdateUser(props) {
 
     const { show, setShow } = props;
     const handleClose = () => {
@@ -78,7 +78,7 @@ export default function ModalCreateUser(props) {
         <>
             <Modal show={show} onHide={handleClose} size="xl">
                 <Modal.Header closeButton>
-                    <Modal.Title>Add new user</Modal.Title>
+                    <Modal.Title>Update user</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form className="row g-3">

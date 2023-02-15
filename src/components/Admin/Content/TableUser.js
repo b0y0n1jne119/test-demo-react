@@ -4,13 +4,13 @@ export default function TableUser(props) {
 
     const [listUsers, setLisUsers] = useState([
         {
-            "id": 32,
+            "id": 1,
             "username": "Nguyen Minh Duc",
             "email": 'b0y0n1jne119@gmail.com',
             "role": 'ADMIN'
         },
         {
-            "id": 31,
+            "id": 2,
             "username": "Nguyen The Dung",
             "email": 'nguyenminhduc119@gmail.com',
             "role": 'USER'
@@ -21,7 +21,7 @@ export default function TableUser(props) {
         <table className='table table-hover table-bordered'>
             <thead>
                 <tr>
-                    <th scope="col">No</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Username</th>
                     <th scope="col">Email</th>
                     <th scope="col">Role</th>
@@ -33,13 +33,13 @@ export default function TableUser(props) {
                     listUsers.map((item, index) => {
                         return (
                             <tr key={`table-users-${index}`}>
-                                <td>{index + 1}</td>
+                                <td>{item.id}</td>
                                 <td>{item.username}</td>
                                 <td>{item.email}</td>
                                 <td>{item.role}</td>
                                 <td>
                                     <button className="btn btn-secondary">View</button>
-                                    <button className="btn btn-warning mx-3">Update</button>
+                                    <button className="btn btn-warning mx-3" onClick={() => props.handleClickBtnUpdate()}>Update</button>
                                     <button className="btn btn-danger">Del</button>
                                 </td>
                             </tr>

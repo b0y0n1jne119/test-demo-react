@@ -3,11 +3,16 @@ import './ManageUser.scss';
 import { FcPlus } from 'react-icons/fc';
 import { useState } from 'react';
 import TableUser from './TableUser';
+import ModalUpdateUser from './ModalUpdateUser';
 
 export default function ManageUser(props) {
 
     const [showModalCreatUser, setShowModalCreatUser] = useState(false);
+    const [showmodalUpdateUser, setShowmodalUpdateUser] = useState(false);
 
+    const handleClickBtnUpdate = () => {
+        setShowmodalUpdateUser(true);
+    }
 
     return (
         <div className="manage-user-container">
@@ -20,11 +25,15 @@ export default function ManageUser(props) {
                         onClick={() => setShowModalCreatUser(true)}> <FcPlus /> Add new user</button>
                 </div>
                 <div className='table-users-container'>
-                    <TableUser />
+                    <TableUser
+                        handleClickBtnUpdate={handleClickBtnUpdate}
+                    />
                 </div>
                 <ModalCreateUser
                     show={showModalCreatUser}
                     setShow={setShowModalCreatUser} />
+                <ModalUpdateUser
+                    show={showmodalUpdateUser} />
             </div>
         </div >
     )

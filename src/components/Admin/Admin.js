@@ -2,7 +2,7 @@ import SideBar from "./SideBar";
 import './Admin.scss';
 import { ProSidebarProvider } from 'react-pro-sidebar';
 import { Outlet } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Admin = (props) => {
