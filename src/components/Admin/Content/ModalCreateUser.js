@@ -3,8 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './ManageUser';
 import { FcPlus } from 'react-icons/fc';
-import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+import { postCreateNewUser } from '../../../services/apiServices';
 
 export default function ModalCreateUser(props) {
 
@@ -63,14 +63,7 @@ export default function ModalCreateUser(props) {
             return;
         }
 
-        const data = new FormData();
-        data.append('emai', email);
-        data.append('password', password);
-        data.append('username', username);
-        data.append('role', role);
-        data.append('image', image);
-
-        axios.post('', data);
+        let data = await postCreateNewUser(email, password, username, role, image);
         toast.success("Complete");
         handleClose();
     }
