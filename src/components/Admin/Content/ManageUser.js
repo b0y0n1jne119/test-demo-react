@@ -9,9 +9,11 @@ export default function ManageUser(props) {
 
     const [showModalCreatUser, setShowModalCreatUser] = useState(false);
     const [showmodalUpdateUser, setShowmodalUpdateUser] = useState(false);
+    const [dataUpdate, setdataUpdate] = useState({});
 
-    const handleClickBtnUpdate = () => {
+    const handleClickBtnUpdate = (user) => {
         setShowmodalUpdateUser(true);
+        setdataUpdate(user)
     }
 
     return (
@@ -33,7 +35,10 @@ export default function ManageUser(props) {
                     show={showModalCreatUser}
                     setShow={setShowModalCreatUser} />
                 <ModalUpdateUser
-                    show={showmodalUpdateUser} />
+                    show={showmodalUpdateUser}
+                    setShow={setShowmodalUpdateUser}
+                    dataUpdate={dataUpdate}
+                />
             </div>
         </div >
     )

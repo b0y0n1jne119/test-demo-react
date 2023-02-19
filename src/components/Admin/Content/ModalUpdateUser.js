@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './ManageUser';
 import { FcPlus } from 'react-icons/fc';
 import { toast } from 'react-toastify';
-import { postCreateNewUser } from '../../../services/apiServices';
+// import { postCreateNewUser } from '../../../services/apiServices';
+import _ from 'lodash';
 
 export default function ModalUpdateUser(props) {
 
-    const { show, setShow } = props;
+    const { show, setShow, dataUpdate } = props;
     const handleClose = () => {
         setShow(false);
         setEmail("");
@@ -25,6 +26,18 @@ export default function ModalUpdateUser(props) {
     const [role, setRole] = useState("USER");
     const [image, setImage] = useState("");
     const [previewImage, setPreviewImage] = useState("");
+
+    useEffect(() => {
+        if (!_.isEmpty(dataUpdate)) {
+            setEmail(dataUpdate.email);
+            setUsername(dataUpdate.username);
+            setRole(dataUpdate.role);
+            setImage("");
+            if (dataUpdate.image) {
+                setPreviewImage(`data:image/jpeg;base64,${dataUpdate.image}`);
+            }
+        }
+    }, [dataUpdate]);
 
     const handleUploadImage = (event) => {
         if (event.target && event.target.files && event.target.files[0]) {
@@ -84,11 +97,11 @@ export default function ModalUpdateUser(props) {
                     <form className="row g-3">
                         <div className="col-md-6">
                             <label className="form-label">Email</label>
-                            <input type="email" className="form-control" value={email} onChange={(event) => setEmail(event.target.value)} />
+                            <input type="email" className="form-control" value={email} disabled={true} onChange={(event) => setEmail(event.target.value)} />
                         </div>
                         <div className="col-md-6">
                             <label className="form-label">Password</label>
-                            <input type="password" className="form-control" value={password} onChange={(event) => setPassword(event.target.value)} />
+                            <input type="password" className="form-control" value={password} disabled={true} onChange={(event) => setPassword(event.target.value)} />
                         </div>
                         <div className="col-md-6">
                             <label className="form-label">Username</label>
