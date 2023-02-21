@@ -18,6 +18,7 @@ export default function ModalUpdateUser(props) {
         setRole("USER");
         setImage("");
         setPreviewImage("");
+        props.resetUpdatedata();
     }
 
     const [email, setEmail] = useState("");
@@ -63,11 +64,6 @@ export default function ModalUpdateUser(props) {
 
         if (!isValidEmail) {
             toast.error('Invalid Email');
-            return;
-        }
-
-        if (!password) {
-            toast.error('Invalid Password');
             return;
         }
 

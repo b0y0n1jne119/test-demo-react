@@ -40,7 +40,7 @@ export default function TableUser(props) {
                                 <td>
                                     <button className="btn btn-secondary">View</button>
                                     <button className="btn btn-warning mx-3" onClick={() => props.handleClickBtnUpdate(item)}>Update</button>
-                                    <button className="btn btn-danger">Del</button>
+                                    <button className="btn btn-danger" onClick={() => props.handleClickBtnDel(item)}>Del</button>
                                 </td>
                             </tr>
                         )
